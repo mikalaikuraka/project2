@@ -128,7 +128,7 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-ASGI_APPLICATION = 'chat.asgi.application'
+ASGI_APPLICATION = 'chat.routing.application'
 
 CHANNEL_LAYERS = {
     'default': {
