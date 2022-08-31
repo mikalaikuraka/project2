@@ -1,6 +1,6 @@
 asgi-redis
 asgiref
-channels==2.4.0
+channels==3.0.1
 daphne==2.5.0
 Django==3.2
 psycopg2
