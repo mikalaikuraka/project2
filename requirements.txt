@@ -5,4 +5,4 @@ daphne
 Django==3.2
 psycopg2
 gunicorn
-channels-redis==2.4.2
+channels-redis
