@@ -31,8 +31,6 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
-LANGUAGE_SESSION_KEY = '_language'
-
 INSTALLED_APPS = [
     'chats',
     'channels',
