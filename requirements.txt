@@ -1,7 +1,8 @@
 asgi-redis
 asgiref
-channels
-daphne
+channels==2.4.0
+daphne==2.5.0
 Django
 psycopg2
 gunicorn
+channels-redis==2.4.2
