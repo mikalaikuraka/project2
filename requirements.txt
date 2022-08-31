@@ -1,7 +1,7 @@
-asgi-redis==0.8.3
-asgiref==0.9
-channels==0.9.3
-daphne==0.9.1
-Django==1.9.3
+asgi-redis
+asgiref
+channels
+daphne
+Django
 psycopg2
 gunicorn
