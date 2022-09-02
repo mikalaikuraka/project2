@@ -140,7 +140,7 @@ CHANNEL_LAYERS = {
     'default': {
         'BACKEND': 'channels_redis.core.RedisChannelLayer',
         'CONFIG': {
-            "hosts": [(os.environ.get('REDIS_LOCATION', '172.20.0.1'), 6379)],
+            "hosts": [(os.environ.get('REDIS_LOCATION', 'https://projectchat.herokuapp.com'), 6379)],
         },
     },
 }
@@ -149,4 +149,4 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 
 
-# было прежде [os.environ.get('REDIS_URL')]
+# было прежде [os.environ.get('REDIS_URL')]https://projectchat.herokuapp.com/
