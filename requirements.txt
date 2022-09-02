@@ -6,4 +6,3 @@ Django==3.2
 psycopg2
 gunicorn
 channels-redis
-bootstrap
