@@ -40,6 +40,7 @@ else:
 INSTALLED_APPS = [
     'chats',
     'channels',
+    'bootstrap4',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -134,15 +135,19 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-ASGI_APPLICATION = 'chat.routing.application'
+ASGI_APPLICATION = 'chat.asgi.application'
 
 CHANNEL_LAYERS = {
     'default': {
         'BACKEND': 'channels_redis.core.RedisChannelLayer',
         'CONFIG': {
-            "hosts": [os.environ.get('REDIS_URL')],
+            "hosts": [(os.environ.get('REDIS_LOCATION', 'localhost'), 6379)],
         },
     },
 }
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+
+
+# было прежде [os.environ.get('REDIS_URL')]
