@@ -40,7 +40,6 @@ else:
 INSTALLED_APPS = [
     'chats',
     'channels',
-    'bootstrap',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
