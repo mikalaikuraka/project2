@@ -7,3 +7,6 @@ def room(request, room_name):
     return render(request, 'chats/room.html', {
         'room_name': room_name
     })
+
+def home(request):
+    return render(request, 'chats/home.html')
