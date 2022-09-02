@@ -20,5 +20,5 @@ from django.contrib import admin
 urlpatterns = [
     path('', include('chats.urls')),
     path('admin/', admin.site.urls),
-    path('chat/', include('chats.urls'))
+    path('<str:room_name>/', include('chats.urls'))
 ]
