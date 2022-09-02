@@ -1,0 +1,26 @@
+{% load bootstrap4 %}
+
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1,
+      shrink-to-fit=no">
+    <title>CHAT</title>
+    {% bootstrap_css %}
+    {% bootstrap_javascript jquery='full' %}
+  </head>
+  <style>
+  body{background-color:#c1d8e2;}
+  </style>
+  <body>
+    <div class="jumbotron">
+        <h1 class="display-4">CHAT</h1>
+        <p class="lead">THIS IS OUR FIRST CHAT.WE ARE VERY PROUD OF HIM!
+            <table>To create a room and start chatting, click on the button below.</table>
+        </p>
+        <a class="btn btn-lg btn-primary" href="{% url 'index' %}"
+          role="button">CREATE ROOM &raquo;</a>
+    </div>
+  </body>
+</html>
