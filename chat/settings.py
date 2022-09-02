@@ -146,3 +146,7 @@ CHANNEL_LAYERS = {
 }
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+
+
+# было прежде [os.environ.get('REDIS_URL')]
