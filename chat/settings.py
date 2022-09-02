@@ -138,7 +138,7 @@ ASGI_APPLICATION = 'chat.asgi.application'
 
 CHANNEL_LAYERS = {
     'default': {
-        'BACKEND': 'channels_redis.core.RedisChannelLayer',
+        'BACKEND': 'channels.layers.InMemoryChannelLayer',
         'CONFIG': {
             "hosts": [(os.environ.get('REDIS_LOCATION', 'https://projectchat.herokuapp.com'), 6379)],
         },
