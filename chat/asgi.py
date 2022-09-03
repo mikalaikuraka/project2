@@ -20,7 +20,7 @@ import chats.routing
 
 
 application = ProtocolTypeRouter({
-  "https": get_asgi_application(),
+  "http": get_asgi_application(),
   "websocket": AuthMiddlewareStack(
         URLRouter(
             chats.routing.websocket_urlpatterns
