@@ -141,7 +141,7 @@ CHANNEL_LAYERS = {
     'default': {
         'BACKEND': 'channels_redis.core.RedisChannelLayer',
         'CONFIG': {
-            "hosts": [(os.environ.get('REDIS_LOCATION', 'localhost'), 6379)],
+            "hosts": [(os.environ.get('REDIS_LOCATION', 'https://projectchat.herokuapp.com'), 6379)],
         },
     },
 }
