@@ -238,8 +238,8 @@ class ChatConsumer(WebsocketConsumer):
 
 
         # Join room group
-        async_to_sync(self.channel_layer.group_add)(self,
-            self.room_group_name,
+        async_to_sync(self.channel_layer.group_add)(
+            'chat',
             self.channel_name
         )
 
