@@ -14,11 +14,17 @@
 
         const chatSocket = new WebSocket(
             'wss://'
-            + window.location.host
+            + 'projectchat.herokuapp.com'
             + '/ws/chat/'
             + roomName
             + '/'
         );
+
+        console.log(chatSocket.readyState);
+
+        chatSocket.onopen = function(e){
+            console.log('Connection');
+        }
 
         chatSocket.onmessage = function(e) {
             const data = JSON.parse(e.data);
