@@ -32,85 +32,93 @@
     
 
 
-import json
-from chat import asgi
-from channels.generic.websocket import AsyncWebsocketConsumer
-class ChatConsumer(AsyncWebsocketConsumer):
-    async def connect(self):
+# import json
+# from chat import asgi
+# from channels.generic.websocket import AsyncWebsocketConsumer
+# class ChatConsumer(AsyncWebsocketConsumer):
+#     async def connect(self):
         
-        print("1")
-        self.room_name = self.scope.get("url_route").get("kwargs").get("room_name")
-        print("2")
-        self.room_group_name = 'chat_%s' % self.room_name
-        print("3")
+#         print("1")
+#         self.room_name = self.scope.get("url_route").get("kwargs").get("room_name")
+#         print("2")
+#         self.room_group_name = 'chat_%s' % self.room_name
+#         print("3")
 
         
 
-        # 4 строки ниже сносят вебсокет, 
-        # но если их закомментить, то вебсокет 
-        # работает но ничего не отображается 
-        # и не подключается по tcp
+#         # 4 строки ниже сносят вебсокет, 
+#         # но если их закомментить, то вебсокет 
+#         # работает но ничего не отображается 
+#         # и не подключается по tcp
 
-        # await self.channel_layer.group_add(
-        #     self.room_group_name,
-        #     self.channel_name
-        # )
+#         # await self.channel_layer.group_add(
+#         #     self.room_group_name,
+#         #     self.channel_name
+#         # )
 
-        try:
-            await self.channel_layer.group_add(
-            self.room_group_name,
-            self.channel_name
-            )
+#         try:
+#             await self.channel_layer.group_add(
+#             self.room_group_name,
+#             self.channel_name
+#             )
             
-        except Warning:
-            print(Warning)
+#         except Warning:
+#             print(Warning)
 
-        print("4")
+#         print("4")
         
         
-        # print('принты')
-        # print(self.scope, 'self.scope')
-        # print(self.room_name, 'room name')
-        # print(self.room_group_name, 'group name')
-        # print(self.channel_name, 'chanel name')
-        # print(self.channel_layer, 'channel layer')
+#         # print('принты')
+#         # print(self.scope, 'self.scope')
+#         # print(self.room_name, 'room name')
+#         # print(self.room_group_name, 'group name')
+#         # print(self.channel_name, 'chanel name')
+#         # print(self.channel_layer, 'channel layer')
 
-        await self.accept()
+#         await self.accept()
 
-        print("5")
-    # async def disconnect(self, close_code):
-    #     # Leave room group
-    #     await self.channel_layer.group_discard(
-    #         self.room_group_name,
-    #         self.channel_name
-    #     )
+#         print("5")
+#     # async def disconnect(self, close_code):
+#     #     # Leave room group
+#     #     await self.channel_layer.group_discard(
+#     #         self.room_group_name,
+#     #         self.channel_name
+#     #     )
 
-    # Receive message from WebSocket
-    async def receive(self, text_data):
-        print('6')
-        text_data_json = json.loads(text_data)
-        print("7")
-        message = text_data_json['message']
-        print("8")
-        # Send message to room group
-        await self.channel_layer.group_send(
-            self.room_group_name,
-            {
-                'type': 'chat_message',
-                'message': message
-            }
-        )
-        print("9")
+#     # Receive message from WebSocket
+#     async def receive(self, text_data):
+#         print('6')
+#         text_data_json = json.loads(text_data)
+#         print("7")
+#         message = text_data_json['message']
+#         print("8")
+#         # Send message to room group
+#         await self.channel_layer.group_send(
+#             self.room_group_name,
+#             {
+#                 'type': 'chat_message',
+#                 'message': message
+#             }
+#         )
+#         print("9")
 
-    # Receive message from room group
-    async def chat_message(self, event):
-        message = event['message']
-        print("10")
-        # Send message to WebSocket
-        await self.send(text_data=json.dumps({
-            'message': message
-        }))
-        print("11")
+#     # Receive message from room group
+#     async def chat_message(self, event):
+#         message = event['message']
+#         print("10")
+#         # Send message to WebSocket
+#         await self.send(text_data=json.dumps({
+#             'message': message
+#         }))
+#         print("11")
+
+
+
+
+
+
+
+
 
 # from channels.consumer import AsyncConsumer
 
@@ -141,6 +149,10 @@ class ChatConsumer(AsyncWebsocketConsumer):
 #             "type": "websocket.send",
 #             "text": event["text"],
 #         })
+
+
+
+
 
 
 # # Импорт для работы с JSON
@@ -214,24 +226,28 @@ class ChatConsumer(AsyncWebsocketConsumer):
 
 
 
-# import json
-# from asgiref.sync import async_to_sync
-# from channels.generic.websocket import WebsocketConsumer
+import json
+from asgiref.sync import async_to_sync
+from channels.generic.websocket import WebsocketConsumer
 
-# class ChatConsumer(WebsocketConsumer):
-#     def connect(self):
-#         # self.room_name = self.scope['url_route']['kwargs']['room_name']
-#         # self.room_group_name = 'chat_%s' % self.room_name
-#         # self.room_group_name = 'chat_%s' % self.scope['room_name']
+class ChatConsumer(WebsocketConsumer):
+    def connect(self):
+        self.room_name = self.scope['url_route']['kwargs']['room_name']
+        self.room_group_name = 'chat_%s' % self.room_name
+        # self.room_group_name = 'chat_%s' % self.scope['room_name']
 
 
-#         # Join room group
-#         async_to_sync(self.channel_layer.group_add)(
-#             'chat',
-#             self.channel_name
-#         )
+        # Join room group
+        async_to_sync(self.channel_layer.group_add)(
+            self.room_group_name,
+            self.channel_name
+        )
 
-#         self.accept()
+        self.send({
+            'type':'websocket.accept'
+        })
+
+        # self.accept()
 
     # def disconnect(self, close_code):
     #     # Leave room group
