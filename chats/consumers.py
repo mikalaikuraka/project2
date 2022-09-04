@@ -50,13 +50,14 @@ class ChatConsumer(AsyncWebsocketConsumer):
 
         
 
-        # Join room group
-        await self.channel_layer.group_add(
-            self.room_group_name,
-            self.channel_name
+        # # Join room group
+        # await self.channel_layer.group_add(
+        #     self.room_group_name,
+        #     self.channel_name
         )
         
         print('принты')
+        print(self.scope, 'self.scope')
         print(self.room_name, 'room name')
         print(self.room_group_name, 'group name')
         print(self.channel_name, 'chanel name')
