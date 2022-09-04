@@ -33,7 +33,11 @@
 
 
 import json
+
+from chat import asgi
+
 from channels.generic.websocket import AsyncWebsocketConsumer
+
 
 class ChatConsumer(AsyncWebsocketConsumer):
     async def connect(self):
@@ -46,11 +50,11 @@ class ChatConsumer(AsyncWebsocketConsumer):
 
         
 
-        # # Join room group
-        # await self.channel_layer.group_add(
-        #     self.room_group_name,
-        #     self.channel_name
-        # )
+        # Join room group
+        await self.channel_layer.group_add(
+            self.room_group_name,
+            self.channel_name
+        )
         
         print('принты')
         print(self.room_name, 'room name')
