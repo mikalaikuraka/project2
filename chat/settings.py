@@ -141,8 +141,8 @@ CHANNEL_LAYERS = {
     'default': {
         'BACKEND': 'channels_redis.core.RedisChannelLayer',
         'CONFIG': {
-            # "hosts": [(os.environ.get('REDIS_LOCATION', 'redis'), 6379)], # пробовали. пишет service not known
-            "hosts": [(os.environ.get('REDIS_LOCATION', 'projectchat.herokuapp.com'), 6379)],
+            # "hosts": [(os.environ.get('REDIS_LOCATION', 'localhost'), 6379)], # пробовали. пишет service not known или local
+            "hosts": [(os.environ.get('REDIS_LOCATION', 'projectchat.herokuapp.com'), 6379)], #heroku
         },
     },
 }

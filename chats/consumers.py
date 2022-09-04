@@ -3,12 +3,12 @@ from channels.generic.websocket import AsyncWebsocketConsumer
 
 class ChatConsumer(AsyncWebsocketConsumer):
     async def connect(self):
-        print("before")
-        await self.accept()
-        print('after')
+        # print("before")
+        # await self.accept()
+        # print('after')
 
-        # self.room_name = self.scope['url_route']['kwargs']['room_name']
-        # self.room_group_name = 'chat_%s' % self.room_name
+        self.room_name = self.scope['url_route']['kwargs']['room_name']
+        self.room_group_name = 'chat_%s' % self.room_name
 
         
 
@@ -24,14 +24,14 @@ class ChatConsumer(AsyncWebsocketConsumer):
         # print(self.channel_name, 'chanel name')
         # print(self.channel_layer, 'channel layer')
 
-        # await self.accept()
+        await self.accept()
 
-    async def disconnect(self, close_code):
-        # Leave room group
-        await self.channel_layer.group_discard(
-            self.room_group_name,
-            self.channel_name
-        )
+    # async def disconnect(self, close_code):
+    #     # Leave room group
+    #     await self.channel_layer.group_discard(
+    #         self.room_group_name,
+    #         self.channel_name
+    #     )
 
     # Receive message from WebSocket
     async def receive(self, text_data):
@@ -56,6 +56,21 @@ class ChatConsumer(AsyncWebsocketConsumer):
             'message': message
         }))
 
+
+# from channels.consumer import AsyncConsumer
+
+# class EchoConsumer(AsyncConsumer):
+
+#     async def websocket_connect(self, event):
+#         await self.send({
+#             "type": "websocket.accept",
+#         })
+
+#     async def websocket_receive(self, event):
+#         await self.send({
+#             "type": "websocket.send",
+#             "text": event["text"],
+#         })
 
 # from channels.consumer import SyncConsumer
 
