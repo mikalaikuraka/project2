@@ -5,11 +5,12 @@ import json
 class EchoConsumer(AsyncWebsocketConsumer):
 
     async def websocket_connect(self, event):
+
+        await self.accept()
+
         await self.send({
             "type": "websocket.accept",
         })
-
-        await self.accept()
 
     async def websocket_receive(self, text_data):
         text_data_json = json.loads(text_data)
