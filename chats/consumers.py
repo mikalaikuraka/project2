@@ -9,6 +9,8 @@ class EchoConsumer(AsyncWebsocketConsumer):
             "type": "websocket.accept",
         })
 
+        await self.accept()
+
     async def websocket_receive(self, text_data):
         text_data_json = json.loads(text_data)
         message = text_data_json['message']
