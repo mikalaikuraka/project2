@@ -33,12 +33,8 @@
 
 
 import json
-
 from chat import asgi
-
 from channels.generic.websocket import AsyncWebsocketConsumer
-
-
 class ChatConsumer(AsyncWebsocketConsumer):
     async def connect(self):
         
@@ -50,22 +46,35 @@ class ChatConsumer(AsyncWebsocketConsumer):
 
         
 
-        # # Join room group
+        # 4 строки ниже сносят вебсокет, 
+        # но если их закомментить, то вебсокет 
+        # работает но ничего не отображается 
+        # и не подключается по tcp
         # await self.channel_layer.group_add(
         #     self.room_group_name,
         #     self.channel_name
         # )
+
+        try:
+            await self.channel_layer.group_add(
+            self.room_group_name,
+            self.channel_name
+            )
+            await self.accept()
+        except Exception:
+            print(Exception)
+
         print("4")
         
 
-        print('принты')
-        print(self.scope, 'self.scope')
-        print(self.room_name, 'room name')
-        print(self.room_group_name, 'group name')
-        print(self.channel_name, 'chanel name')
-        print(self.channel_layer, 'channel layer')
+        # print('принты')
+        # print(self.scope, 'self.scope')
+        # print(self.room_name, 'room name')
+        # print(self.room_group_name, 'group name')
+        # print(self.channel_name, 'chanel name')
+        # print(self.channel_layer, 'channel layer')
 
-        await self.accept()
+        # await self.accept()
 
         print("5")
     # async def disconnect(self, close_code):
