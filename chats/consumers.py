@@ -1,17 +1,32 @@
-from channels.consumer import AsyncConsumer
+# from channels.consumer import AsyncConsumer
+from channels.generic.websocket import AsyncWebsocketConsumer
+import json
 
-class EchoConsumer(AsyncConsumer):
+class EchoConsumer(AsyncWebsocketConsumer):
 
     async def websocket_connect(self, event):
         await self.send({
             "type": "websocket.accept",
         })
 
-    async def websocket_receive(self, event):
+    async def websocket_receive(self, text_data):
+        text_data_json = json.loads(text_data)
+        message = text_data_json['message']
+        
         await self.send({
             "type": "websocket.send",
-            "text": event["text"],
+            "message": message,
         })
+
+    async def chat_message(self, event):
+        message = event['message']
+
+        # Send message to WebSocket
+        await self.send(event =json.dumps({
+            'message': message
+        }))
+
+    
 
 
 # import json
