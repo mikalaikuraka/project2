@@ -41,21 +41,23 @@ from channels.generic.websocket import AsyncWebsocketConsumer
 
 class ChatConsumer(AsyncWebsocketConsumer):
     async def connect(self):
-        # print("before")
-        # await self.accept()
-        # print('after')
-
-        self.room_name = self.scope['url_route']['kwargs']['room_name']
+        
+        print("1")
+        self.room_name = self.scope.get("url_route").get("kwargs").get("room_name")
+        print("2")
         self.room_group_name = 'chat_%s' % self.room_name
+        print("3")
 
         
 
-        # # Join room group
-        # await self.channel_layer.group_add(
-        #     self.room_group_name,
-        #     self.channel_name
-        # )
+        # Join room group
+        await self.channel_layer.group_add(
+            self.room_group_name,
+            self.channel_name
+        )
+        print("4")
         
+
         print('принты')
         print(self.scope, 'self.scope')
         print(self.room_name, 'room name')
@@ -65,6 +67,7 @@ class ChatConsumer(AsyncWebsocketConsumer):
 
         await self.accept()
 
+        print("5")
     # async def disconnect(self, close_code):
     #     # Leave room group
     #     await self.channel_layer.group_discard(
@@ -74,9 +77,11 @@ class ChatConsumer(AsyncWebsocketConsumer):
 
     # Receive message from WebSocket
     async def receive(self, text_data):
+        print('6')
         text_data_json = json.loads(text_data)
+        print("7")
         message = text_data_json['message']
-
+        print("8")
         # Send message to room group
         await self.channel_layer.group_send(
             self.room_group_name,
@@ -85,16 +90,17 @@ class ChatConsumer(AsyncWebsocketConsumer):
                 'message': message
             }
         )
+        print("9")
 
     # Receive message from room group
     async def chat_message(self, event):
         message = event['message']
-
+        print("10")
         # Send message to WebSocket
         await self.send(text_data=json.dumps({
             'message': message
         }))
-
+        print("11")
 
 # from channels.consumer import AsyncConsumer
 
