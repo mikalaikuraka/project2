@@ -6,6 +6,8 @@ class ChatConsumer(AsyncWebsocketConsumer):
         print("connecting")
         self.room_name = self.scope['url_route']['kwargs']['room_name']
         self.room_group_name = 'chat_%s' % self.room_name
+
+        print(self.scope['url_route'], 'url route')
         print(self.room_name, 'room name')
         print(self.room_group_name, 'group name')
         print(self.channel_name, 'chanel name')
