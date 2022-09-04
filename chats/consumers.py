@@ -17,7 +17,7 @@ class EchoConsumer(AsyncWebsocketConsumer):
         message = text_data_json['message']
         
         await self.send({
-            "type": "websocket.send",
+            "type": "chat_message",
             "message": message,
         })
 
