@@ -52,11 +52,11 @@ class ChatConsumer(AsyncWebsocketConsumer):
         #     self.channel_name
         # )
         
-        # print('принты')
-        # print(self.room_name, 'room name')
-        # print(self.room_group_name, 'group name')
-        # print(self.channel_name, 'chanel name')
-        # print(self.channel_layer, 'channel layer')
+        print('принты')
+        print(self.room_name, 'room name')
+        print(self.room_group_name, 'group name')
+        print(self.channel_name, 'chanel name')
+        print(self.channel_layer, 'channel layer')
 
         await self.accept()
 
