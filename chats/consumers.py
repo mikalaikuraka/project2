@@ -62,8 +62,8 @@ class ChatConsumer(AsyncWebsocketConsumer):
             self.channel_name
             )
             
-        except Exception:
-            print(Exception)
+        except Warning:
+            print(Warning)
 
         print("4")
         
