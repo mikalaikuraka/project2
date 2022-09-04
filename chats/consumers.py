@@ -228,9 +228,9 @@
 
 import json
 from asgiref.sync import async_to_sync
-from channels.generic.websocket import WebsocketConsumer
+from channels.generic.websocket import SyncConsumer
 
-class ChatConsumer(WebsocketConsumer):
+class ChatConsumer(SyncConsumer):
     def connect(self):
         self.room_name = self.scope['url_route']['kwargs']['room_name']
         self.room_group_name = 'chat_%s' % self.room_name
@@ -238,16 +238,16 @@ class ChatConsumer(WebsocketConsumer):
 
 
         # Join room group
-        async_to_sync(self.channel_layer.group_add)(
+        async_to_sync(self.channel_layer.group_add)(self,
             self.room_group_name,
             self.channel_name
         )
 
-        self.send({
-            'type':'websocket.accept'
-        })
+        # self.send({
+        #     'type':'websocket.accept'
+        # })
 
-        # self.accept()
+        self.accept()
 
     # def disconnect(self, close_code):
     #     # Leave room group
