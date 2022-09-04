@@ -50,6 +50,7 @@ class ChatConsumer(AsyncWebsocketConsumer):
         # но если их закомментить, то вебсокет 
         # работает но ничего не отображается 
         # и не подключается по tcp
+
         # await self.channel_layer.group_add(
         #     self.room_group_name,
         #     self.channel_name
@@ -60,13 +61,13 @@ class ChatConsumer(AsyncWebsocketConsumer):
             self.room_group_name,
             self.channel_name
             )
-            await self.accept()
+            
         except Exception:
             print(Exception)
 
         print("4")
         
-
+        
         # print('принты')
         # print(self.scope, 'self.scope')
         # print(self.room_name, 'room name')
@@ -74,7 +75,7 @@ class ChatConsumer(AsyncWebsocketConsumer):
         # print(self.channel_name, 'chanel name')
         # print(self.channel_layer, 'channel layer')
 
-        # await self.accept()
+        await self.accept()
 
         print("5")
     # async def disconnect(self, close_code):
