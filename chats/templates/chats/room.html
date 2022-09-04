@@ -14,7 +14,7 @@
 
         let chatSocket = new WebSocket(
             'wss://'
-            + 'projectchat.herokuapp.com'
+            + window.location.host
             + '/ws/chat/'
             + roomName
             + '/'
