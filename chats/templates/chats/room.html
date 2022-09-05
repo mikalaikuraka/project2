@@ -18,7 +18,11 @@
     <div class="jumbotron">
         <p class="lead">ROOM {{  room_name  }}</p>
         <textarea id="chat-log" cols="60" rows="20" disabled></textarea><br>
-        <input id="chat-message-input" type="text" size="59" style="margin: 0px 0px;">
+        <input id="chat-message-input" type="text" size="59" style="
+            height: 38px;
+            border-bottom-width: 2px;
+            padding-bottom: 2px;
+        ">
         <button type="button" class="btn btn-info" data-toggle="tooltip" 
         id="chat-message-submit" title="Create new room" style="margin: -500px 0px;">
         Send</button>
