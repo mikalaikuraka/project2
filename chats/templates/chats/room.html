@@ -1,13 +1,34 @@
+{% load bootstrap4 %}
+
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8"/>
     <title>{{ room_name }}</title>
+    <base href="/">
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}  
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" />
+
 </head>
+<style>
+  body{background-color:#c1d8e2;}
+</style>
+
 <body>
-    <textarea id="chat-log" cols="100" rows="20"></textarea><br>
-    <input id="chat-message-input" type="text" size="100"><br>
-    <input id="chat-message-submit" type="button" value="Send">
+    <div class="jumbotron text-center">
+            <p class="lead ">{{ room_name }}</p>
+            <textarea id="chat-log" cols="60" rows="20" disabled="" style="height: 501px;width: 806px;" style = 'font-family:"Courier New", Courier, monospace' ></textarea><br>
+            <input id="chat-message-input" type="text" placeholder="Написать сообщение..." size="59" style="
+                height: 38px;
+                border-bottom-width: 2px;
+                padding-bottom: 2px;
+                width: 558px;
+            ">
+            <button type="button" class="btn btn-info" data-toggle="tooltip" id="chat-message-submit" title="Create new room" style="margin: -500px 0px;width: 76px;height: 39px;">
+            Send</button>
+    </div>
+
     {{ room_name|json_script:"room-name" }}
     <script>
         const roomName = JSON.parse(document.getElementById('room-name').textContent);
