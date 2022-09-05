@@ -5,11 +5,11 @@
 <head>
     <meta charset="utf-8"/>
     <title>{{ room_name }}</title>
-
+    <base href="/">
 {% bootstrap_css %}
 {% bootstrap_javascript jquery='full' %}  
-
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" />
+    <!-- <link rel="stylesheet" href="style.css"> -->
 
 </head>
 <style>
@@ -17,19 +17,17 @@
 </style>
 
 <body>
-    <div class="jumbotron" style="
-        padding-right: 40px;
-        padding-left: 350px;
-    ">
-        <p class="lead" text-align="center">ROOM 1</p>
-        <textarea id="chat-log" cols="60" rows="20" disabled="" style="height: 501px;"></textarea><br>
-        <input id="chat-message-input" type="text" size="59" style="
-            height: 38px;
-            border-bottom-width: 2px;
-            padding-bottom: 2px;
-        ">
-        <button type="button" class="btn btn-info" data-toggle="tooltip" id="chat-message-submit" title="Create new room" style="margin: -500px 0px;">
-        Send</button>
+    <div class="jumbotron text-center">
+            <p class="lead ">{{ room_name }}</p>
+            <textarea id="chat-log" cols="60" rows="20" disabled="" style="height: 501px;width: 806px;" style = 'font-family:"Courier New", Courier, monospace' ></textarea><br>
+            <input id="chat-message-input" type="text" placeholder="Написать сообщение..." size="59" style="
+                height: 38px;
+                border-bottom-width: 2px;
+                padding-bottom: 2px;
+                width: 558px;
+            ">
+            <button type="button" class="btn btn-info" data-toggle="tooltip" id="chat-message-submit" title="Create new room" style="margin: -500px 0px;width: 76px;height: 39px;">
+            Send</button>
     </div>
 
     {{ room_name|json_script:"room-name" }}
