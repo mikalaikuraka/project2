@@ -1,13 +1,29 @@
+{% load bootstrap4 %}
+
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8"/>
     <title>{{ room_name }}</title>
+
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}  
+
 </head>
+<style>
+  body{background-color:#c1d8e2;}
+</style>
+
 <body>
-    <textarea id="chat-log" cols="100" rows="20"></textarea><br>
-    <input id="chat-message-input" type="text" size="100"><br>
-    <input id="chat-message-submit" type="button" value="Send">
+    <div class="jumbotron">
+        <p class="lead">ROOM {{  room_name  }}</p>
+        <textarea id="chat-log" cols="60" rows="20" disabled></textarea><br>
+        <input id="chat-message-input" type="text" size="59" style="margin: 0px 0px;">
+        <button type="button" class="btn btn-info" data-toggle="tooltip" 
+        id="chat-message-submit" title="Create new room" style="margin: -500px 0px;">
+        Send</button>
+    </div>
+
     {{ room_name|json_script:"room-name" }}
     <script>
         const roomName = JSON.parse(document.getElementById('room-name').textContent);
