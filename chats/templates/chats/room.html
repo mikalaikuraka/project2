@@ -15,16 +15,18 @@
 </style>
 
 <body>
-    <div class="jumbotron">
-        <p class="lead">ROOM {{  room_name  }}</p>
-        <textarea id="chat-log" cols="60" rows="20" disabled></textarea><br>
+    <div class="jumbotron" style="
+        padding-right: 40px;
+        padding-left: 350px;
+    ">
+        <p class="lead">ROOM 1</p>
+        <textarea id="chat-log" cols="60" rows="20" disabled="" style="height: 501px;"></textarea><br>
         <input id="chat-message-input" type="text" size="59" style="
             height: 38px;
             border-bottom-width: 2px;
             padding-bottom: 2px;
         ">
-        <button type="button" class="btn btn-info" data-toggle="tooltip" 
-        id="chat-message-submit" title="Create new room" style="margin: -500px 0px;">
+        <button type="button" class="btn btn-info" data-toggle="tooltip" id="chat-message-submit" title="Create new room" style="margin: -500px 0px;">
         Send</button>
     </div>
 
