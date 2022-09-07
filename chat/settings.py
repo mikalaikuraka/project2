@@ -28,7 +28,6 @@ IS_HEROKU = "DYNO" in os.environ
 # SECURITY WARNING: don't run with debug turned on in production!
 if not IS_HEROKU:
     DEBUG = True
-# DEBUG = False
 
 if IS_HEROKU:
     ALLOWED_HOSTS = ["*"]
@@ -141,18 +140,10 @@ ASGI_APPLICATION = 'chat.asgi.application'
 CHANNEL_LAYERS = {
     'default': {
         'BACKEND': 'channels_redis.core.RedisChannelLayer',
-        # 'BACKEND': 'channels.layers.InMemoryChannelLayer',
         'CONFIG': {
-            # "hosts": [(os.environ.get('REDIS_LOCATION', '172.20.0.1'), 6379)],
-            # "hosts": [(os.environ.get('REDIS_LOCATION', 'https://projectchat.herokuapp.com'), 6379)],
             "hosts": [(os.environ.get('REDIS_LOCATION', 'localhost'), 6379)],
-            # "hosts": [(os.environ.get('REDIS_URL'), 6379)],
         },
     },
 }
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-
-
-
-# было прежде [os.environ.get('REDIS_URL')]https://projectchat.herokuapp.com/
