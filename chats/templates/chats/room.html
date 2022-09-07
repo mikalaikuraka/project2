@@ -9,7 +9,6 @@
 {% bootstrap_css %}
 {% bootstrap_javascript jquery='full' %}  
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" />
-
 </head>
 <style>
   body{background-color:#c1d8e2;}
@@ -17,6 +16,8 @@
 
 <body>
     <div class="jumbotron text-center">
+            <a text-align="left" id='back-create-room'role="button" class="btn btn-info" href="/chat/" style="
+            margin-bottom: 10px;">&laquo Back to create room</a>
             <p class="lead ">{{ room_name }}</p>
             <textarea id="chat-log" cols="60" rows="20" disabled="" style="height: 501px;width: 806px;" style = 'font-family:"Courier New", Courier, monospace' ></textarea><br>
             <input id="chat-message-input" type="text" placeholder="Написать сообщение..." size="59" style="
