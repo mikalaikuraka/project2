@@ -1,14 +1,28 @@
+{% load bootstrap4 %}
+
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8"/>
     <title>CREATE ROOMS</title>
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}    
 </head>
+<style>
+  body{background-color:#c1d8e2;}
+</style>
 <body>
-    What chat room would you like to enter?<br>
-    <input id="room-name-input" type="text" size="100"><br>
-    <input id="room-name-submit" type="button" value="Enter">
-
+    <div class="jumbotron">
+        <p class="lead">TO CREATE A ROOM, ENTER A NAME AND CONFIRM IT.</p>
+        <input id="room-name-input" type="text" size="45" required="" style="
+            height: 37px;
+            border-right-width: 3px;
+        ">
+        <button type="button" class="btn btn-info" data-toggle="tooltip" 
+            id="room-name-submit" title="Create new room" style="margin:20px;">
+            Create
+        </button>
+    </div>    
     <script>
         document.querySelector('#room-name-input').focus();
         document.querySelector('#room-name-input').onkeyup = function(e) {
