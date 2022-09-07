@@ -1,7 +1,7 @@
 from django.test import TestCase
 
 class SearchFormTestCase(TestCase):
-    """Tests host and page"""
+    """Тест страниц"""
 
     def test_chat_room_status_code(self):
         response = self.client.get('/chat/1/')
